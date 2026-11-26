@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Benchmark Run Checkpoint",
+  "type": "object",
+  "properties": {
+    "run_id": {"type": "string"},
+    "model_id": {"type": "string"},
+    "task_id": {"type": "string"},
+    "sample_idx": {"type": "integer"},
+    "state": {"type": "object"},
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "latency_ms": {"type": "number"},
+        "throughput_toks_per_sec": {"type": "number"},
+        "memory_bytes": {"type": "integer"},
+        "error": {"type": ["string", "null"]}
+      },
+      "required": ["latency_ms", "throughput_toks_per_sec", "memory_bytes"]
+    },
+    "timestamp": {"type": "string", "format": "date-time"}
+  },
+  "required": ["run_id", "model_id", "task_id", "sample_idx", "state", "metrics", "timestamp"]
+}
